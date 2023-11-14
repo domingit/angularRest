@@ -19,24 +19,24 @@ https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz
 .
 
 #### Description of the required functionality:
-● Display 10 results from the API https://api.thedogapi.com/v1/breeds using
+-  Display 10 results from the API https://api.thedogapi.com/v1/breeds using
 the API key
 live_SuYPHKLerg5vyOCBxpw08WTn8UWjmClTAyDquG1l3MV3uhuXMXcKAn51T4Un2Q0m
-● Display only the breeds that have additional breed information. There's a
+- Display only the breeds that have additional breed information. There's a
 parameter for that.
-● A simple list will be displayed with the breed name and a button at the end of
+- A simple list will be displayed with the breed name and a button at the end of
 the item.
-● After clicking the "show more" button, additional information from the API
+- After clicking the "show more" button, additional information from the API
 will be fetched https://api.thedogapi.com/v1/images/[reference_image_id].
 The visual of the open profile is shown on the third item.
-● Above the list is an input, which will filter the list by breed name. The filtering
+- Above the list is an input, which will filter the list by breed name. The filtering
 is only local, there's no need to call the API again. After filtering, the count of
 displayed results is updated.
-● The visual should resemble the attached one, but there's no need to
+- The visual should resemble the attached one, but there's no need to
 fine-tune it in detail (e.g., the input).
-● Send the output of this task as packed source files or upload it to a private git
+- Send the output of this task as packed source files or upload it to a private git
 repo.
-● Happy coding!
+- Happy coding!
 
 #### Design:
 The design parameters are here:
