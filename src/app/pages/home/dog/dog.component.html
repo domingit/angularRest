@@ -1,0 +1,40 @@
+<mat-expansion-panel [expanded]="step === position" (opened)="setActivePosition(position); fetchData()" (closed)="setInactivePosition(position)" hideToggle>
+<mat-expansion-panel-header class="right-aligned-header">
+    <mat-panel-title>{{dog.name}}</mat-panel-title>
+    <mat-panel-description>
+
+        <div class="opened" *ngIf="step === position; else Closed"> Close </div>
+        
+        <ng-template #Closed>
+            <div class="closed">Show more</div>
+        </ng-template>
+    </mat-panel-description>
+</mat-expansion-panel-header>
+
+<div class="dog-container" *ngIf="dogDetail$ | async">
+    <div class="row-container" *ngIf="!(loading$ | async); else Loading">
+            <img class="dog-img dog-item" src="{{(dogDetail$ | async)?.url}}" alt="{{dog.name}}" width="200" height="200">
+            <div class="dog-description-wrapper dog-item">    
+                <div class="dog-description">{{dog.temperament}}</div>
+                <div class="dog-detail">
+                    <div class="dog-detail-item">
+                        <span class="dog-label">Lifespan</span>
+                        <span class="dog-value">{{dog.life_span}}</span>
+                    </div>
+                    <div class="dog-detail-item">
+                        <span class="dog-label">Origin</span>
+                        <span class="dog-value">{{dog.origin}}</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <ng-template #Loading>
+        <div class="loading">Loading...</div>
+    </ng-template>
+</div>
+
+<div *ngIf="hasError$ | async">Error loading data</div>
+
+<div *ngIf="loading$ | async">Loading...</div>
+
+</mat-expansion-panel>

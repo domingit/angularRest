@@ -1,1 +1,90 @@
+@use '@angular/material' as mat;
 /* You can add global styles to this file, and also import other style files */
+@import "src/variables.scss";
+
+
+
+// Include non-theme styles for core.
+@include mat.core();
+
+$mat-custom-theme:  (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #e1234e,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+// Define a theme.
+$primary: mat.define-palette($mat-custom-theme);
+$accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+html, body { 
+    height: 100%;
+}
+
+body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: $bg-color;
+    color: $text-color;
+}
+
+// style for error pages
+.content-error {
+  padding: 30px 10px;
+  color: $error-page-font-color;
+}
+
+// style for material input
+.mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    background-color: $white;
+    border-radius: 12px;
+    border:1px solid $text-color;
+}
+
+// Manipulate initial background color
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white !important;
+}
+
+// Manipulate background color on hover and focus
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+
+// style for material expansion panel
+.mat-expansion-panel-body {
+  padding: 0 37px 16px 24px !important;;
+}
+
+.mat-expansion-panel-header-title {
+  color: $text-color !important;
+}
+

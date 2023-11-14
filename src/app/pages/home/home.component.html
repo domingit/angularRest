@@ -1,0 +1,26 @@
+<app-description></app-description>
+
+<div class="filter-wrapper">
+    <mat-label class="row field-label">{{filterTitle}}</mat-label>
+    <mat-form-field class="row mat-mdc-form-field mat-mdc-form-field-type-mat-input mat-form-field-appearance-outline mat-primary">
+        <mat-label>{{filterPlaceholder}}</mat-label>
+        <input matInput type="text" [(ngModel)]="filterValue" (ngModelChange)="updateDogs($event)">
+        <button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+</div>
+
+<p *ngIf="((totalCount$ | async) === 0 && (isInitialized$ | async)); else TotalCnt">No data found</p>
+
+<ng-template #TotalCnt>
+    <p>{{totalCount$ | async}} results</p>
+</ng-template>
+
+<mat-accordion class="example-headers-align" *ngIf="dogList$ | async" [multi]="false">
+
+    <ng-container *ngFor="let dog of dogList$ | async; let i = index; trackBy: trackByNav">
+        <app-dog [dog]="dog" [position]="i"></app-dog>
+    </ng-container>
+  
+</mat-accordion>

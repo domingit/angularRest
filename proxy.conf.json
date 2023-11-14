@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://api.thedogapi.com/",
+    "pathRewrite": {
+      "^/api": "https://api.thedogapi.com/v1"
+    },
+    "secure": false,
+    "changeOrigin": true
+  }
+}
