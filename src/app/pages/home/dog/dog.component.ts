@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Dog, DogDetail } from 'src/app/shared/models';
-import { HomeService } from '../home.service';
 import { BehaviorSubject, Observable, catchError, finalize, of, tap } from 'rxjs';
+import { HomeApi } from '../home.api';
 
 @Component({
   selector: 'app-dog',
   templateUrl: './dog.component.html',
   styleUrls: ['./dog.component.scss'],
+  providers: [HomeApi],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
@@ -24,7 +25,7 @@ export class DogComponent {
 
   step = -1;
 
-  constructor(private homeService: HomeService) {}
+  constructor(private api: HomeApi) {}
 
   setActivePosition(index: number) {
     this.step = index;
@@ -39,18 +40,11 @@ export class DogComponent {
   fetchData() {
     this._loadingSubject.next(true);
     this._hasErrorSubject.next(false);
-    this.homeService.fetchDogById(this.dog.reference_image_id).pipe(
+    this.api.fetchDogById(this.dog.reference_image_id).pipe(
       tap(res => this._dogDetailSubject.next(res)),
       catchError((err) => {this._hasErrorSubject.next(true); return of(err)}),
       finalize(() => this._loadingSubject.next(false))
     ).subscribe();
-  }
-
-  customImageLoader(imageUrl: string, size: string): string {
-    // Implement your logic to generate the appropriate image URL based on the size
-    // For example, you can append the size to the image URL
-    const imageUrlWithSize = `${imageUrl}?size=${size}`;
-    return imageUrlWithSize;
   }
 
 }

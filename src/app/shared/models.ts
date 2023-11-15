@@ -13,6 +13,7 @@ interface Bread {
     temperament: string;
     origin: string;
     reference_image_id: string;
+    country_code?: string;
 }
 
 interface ImgMetric {
