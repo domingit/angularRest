@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   filterTitle = 'Filter by breed name';
   filterPlaceholder = 'Breed name';
 
-  filterValueControl: FormControl<string> = new FormControl('');
+  filterValueControl: FormControl<string> = new FormControl(null);
   isInitialized$ = this.homeService.isInitialized$;
   dogList$: Observable<Dog[]>;
 

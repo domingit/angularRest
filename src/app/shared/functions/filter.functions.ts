@@ -13,7 +13,7 @@ export function filterOptions<T>(options:T[], value: string = '', filterBy: stri
       return [];
     }
 
-    if (value.trim() === '') {
+    if (!value || value.trim() === '') {
       return options.slice();
     }
 
