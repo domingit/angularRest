@@ -1,6 +1,6 @@
 <mat-expansion-panel [expanded]="step === position" (opened)="setActivePosition(position); fetchData()" (closed)="setInactivePosition(position)" hideToggle>
 <mat-expansion-panel-header class="right-aligned-header">
-    <mat-panel-title>{{dog.name}}</mat-panel-title>
+    <mat-panel-title>{{dog?.name}}</mat-panel-title>
     <mat-panel-description>
 
         <div class="opened" *ngIf="step === position; else Closed"> Close </div>
@@ -12,8 +12,12 @@
 </mat-expansion-panel-header>
 
 <div class="dog-container" *ngIf="dogDetail$ | async">
-    <div class="row-container" *ngIf="!(loading$ | async); else Loading">
-            <img class="dog-img dog-item" src="{{(dogDetail$ | async)?.url}}" alt="{{dog.name}}" width="200" height="200">
+    <div class="row-container" *ngIf="!(loading$ | async); else Loading"> 
+            <img *ngIf="(dogDetail$ | async)?.url" class="dog-img dog-item" [ngSrc]="(dogDetail$ | async)?.url" alt="{{dog.name}}"
+            width="{{(dogDetail$ | async)?.width/((dogDetail$ | async)?.width/300)}}"
+            height="{{(dogDetail$ | async)?.height/((dogDetail$ | async)?.width/300)}}" 
+            disableOptimizedSrcset priority>
+
             <div class="dog-description-wrapper dog-item">    
                 <div class="dog-description">{{dog.temperament}}</div>
                 <div class="dog-detail">
@@ -34,7 +38,5 @@
 </div>
 
 <div *ngIf="hasError$ | async">Error loading data</div>
-
-<div *ngIf="loading$ | async">Loading...</div>
 
 </mat-expansion-panel>

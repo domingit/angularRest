@@ -18,6 +18,10 @@
     margin: 0 0 .25rem 0;
 }
 
+.mat-expansion-panel-header-description {
+    flex-grow: 1 !important;
+}
+
 .opened {
     color: $opened;
 }
@@ -109,4 +113,3 @@ img {
 .dog-detail-item:first-child {
     width: 40%;
 }
-
