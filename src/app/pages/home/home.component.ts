@@ -21,8 +21,7 @@ export class HomeComponent implements OnInit {
 
   debounceTime = 200;
 
-  constructor(
-    private homeService: HomeService) {
+  constructor(private homeService: HomeService) {
 
       this.filterValueControl.valueChanges.pipe(
         debounceTime(this.debounceTime),

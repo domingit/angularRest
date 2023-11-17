@@ -3,11 +3,8 @@
     <mat-panel-title>{{dog?.name}}</mat-panel-title>
     <mat-panel-description>
 
-        <div class="opened" *ngIf="step === position; else Closed"> Close </div>
+        <div [ngClass]="step === position ? 'opened' : 'closed'" class="opened">{{step === position ? "opened" : "closed"}}</div>
         
-        <ng-template #Closed>
-            <div class="closed">Show more</div>
-        </ng-template>
     </mat-panel-description>
 </mat-expansion-panel-header>
 
