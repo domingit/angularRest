@@ -1,4 +1,4 @@
-# PentahospitalsTask
+# angularRest
 
 technical assignment for the interview of senior frontend developers
 
